@@ -25,5 +25,5 @@ For extreme computational performance, this architecture is strictly modularized
 To compile the raw calculus into a high-speed binary Shared Object (`.so`) and execute the multi-threaded extraction, run the following command using CERN ROOT's ACLiC interface:
 
 ```bash
-root -l -b -q "physics_math.cpp+" "z_boson.cpp+"
+root -l -b -q "01_physics_math.cpp+" "02_z_boson.cpp+"
 ```
