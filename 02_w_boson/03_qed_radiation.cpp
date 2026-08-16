@@ -6,13 +6,12 @@ TLorentzVector apply_qed_fsr(const TLorentzVector& muon) {
     // Thread-safe random number generator
     static thread_local TRandom3 qed_rand(0);
     
-
     // The Infrared Cutoff Boundaries
     double z_min = 0.85;  // We cap the max energy loss at 15% for a single hard emission
     double z_max = 0.999; // The mathematical shield against the Infrared Catastrophe
+    
     double z_kept = 1.0;  // Default: Muon keeps 100% of its energy
     
-
     // Quantum Probability: Not every muon radiates a hard photon.
     // We estimate roughly 20% of muons undergo significant, measurable FSR.
     if (qed_rand.Uniform(0.0, 1.0) < 0.20) {
@@ -32,7 +31,6 @@ TLorentzVector apply_qed_fsr(const TLorentzVector& muon) {
         }
     }
     
-
     // ---------------------------------------------------------
     // COLLINEAR VECTOR SCALING
     // ---------------------------------------------------------

@@ -7,8 +7,6 @@ TLorentzVector decay_w_boson(const TLorentzVector& w_boson, int w_charge) {
     // Thread-safe random number generator
     static thread_local TRandom3 decay_rand(0); 
     
-
-
     // ---------------------------------------------------------
     // STEP 1: THE W BOSON REST FRAME KINEMATICS
     // ---------------------------------------------------------
@@ -17,8 +15,6 @@ TLorentzVector decay_w_boson(const TLorentzVector& w_boson, int w_charge) {
     // (We assume the muon mass ~0.105 GeV is negligible compared to 80 GeV).
     double p_muon = w_boson.M() / 2.0; 
     
-
-
     // ---------------------------------------------------------
     // STEP 2: THE V-A HELICITY ANGULAR FILTER
     // ---------------------------------------------------------
@@ -52,9 +48,6 @@ TLorentzVector decay_w_boson(const TLorentzVector& w_boson, int w_charge) {
     // The azimuthal angle (rotation around the axis) remains uniform
     double phi = decay_rand.Uniform(-M_PI, M_PI);
     
-
-
-
     // ---------------------------------------------------------
     // STEP 3: BUILD MUON IN REST FRAME
     // ---------------------------------------------------------
@@ -66,8 +59,6 @@ TLorentzVector decay_w_boson(const TLorentzVector& w_boson, int w_charge) {
         p_muon                              // Energy (E = p for massless approximation)
     );
     
-
-
     // ---------------------------------------------------------
     // STEP 4: LORENTZ BOOST TO LABORATORY FRAME
     // ---------------------------------------------------------

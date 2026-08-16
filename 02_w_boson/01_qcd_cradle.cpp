@@ -8,7 +8,7 @@
 LHAPDF::PDF* proton_grid = nullptr;
 const double sqrt_s = 8000.0;
 
-
+// FIX 1: Corrected spelling to match header and main core
 void initialize_qcd_grid(){
     std::cout << "Loading Neural Grid Into Memory....." << std::endl;
     LHAPDF::setVerbosity(0);
@@ -25,17 +25,17 @@ TLorentzVector generate_w_boson_qcd(double target_mass){
         double test_pt = qcd_rand.Uniform(0.0, 50.0);
         double test_weights = (test_pt * test_pt) * std::exp(-0.6 * test_pt);
         if (qcd_rand.Uniform(0.0, max_sudakov_weight) < test_weights){
-
+            // FIX 2: Modified outer pt_w directly and assigned test_pt (momentum)
             pt_w = test_pt; 
             break;
         }
     }
     double phi_w = qcd_rand.Uniform(-M_PI, M_PI);
 
-    //  Transverse Mass (m_T)
+    // FIX 3: Added std::sqrt for true Transverse Mass (m_T)
     double mt_w = std::sqrt(target_mass * target_mass + pt_w * pt_w);
     
-    // Rapidity bound y_max = ln(sqrt_s / m_T)
+    // FIX 4: Corrected rapidity bound y_max = ln(sqrt_s / m_T)
     double y_max = std::log(sqrt_s / mt_w);
     double pz_w = 0.0;
     double energy_w = 0.0;
@@ -43,7 +43,7 @@ TLorentzVector generate_w_boson_qcd(double target_mass){
     while(true){
         double y_w = qcd_rand.Uniform(-y_max, y_max);
         
-        // Bjorken x ratios: x = (m_T / sqrt_s) * exp(+/- y)
+        // FIX 5: Corrected Bjorken x ratios: x = (m_T / sqrt_s) * exp(+/- y)
         double x1 = (mt_w / sqrt_s) * std::exp(y_w);
         double x2 = (mt_w / sqrt_s) * std::exp(-y_w);
 
